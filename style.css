@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+main {
+  max-width: 596px;
+  margin: 0 auto;
+}
+section {
+  margin: 15px;
+  border: 1px solid gainsboro;
+  border-radius: 15px;
+}
+
+a {
+  text-decoration: none;
+}
