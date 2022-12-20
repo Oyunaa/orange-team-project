@@ -1,0 +1,262 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    font-size: 14px;
+    font-weight: 400;
+    font-family: Commissioner, sans-serif;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+ul{
+    padding: 0;
+}
+ul li{
+    list-style: none;
+}
+header{
+    background-color: #6C2699;
+    position: relative;
+}
+.contain{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+/* FIrstHead section */
+header .row{
+     --bs-gutter-x: 0;
+}
+.firstHead{
+    border-bottom: 1px solid #8d5aad;
+    color: #fff;
+    align-items: center;
+}
+.shoptext{
+    font-size: 13px;
+}
+.headSecOne div{
+    text-align: center;
+    font-size: 11px;
+    font-weight: 500;
+}
+.headSecOne a:hover {
+    color: #FF6166;
+}
+.headSecOne p:hover {
+    color: #FF6166;
+}
+.socialIcons {
+    text-align: center;
+}
+.socialIcons i {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.dlFromStore img{
+    padding: 20px;
+}
+.modal-content p{
+    color: #000;
+    font-size: 24px;
+}
+/* second head  */
+.bothHead{
+    position: sticky;
+    margin-top: 0;
+    z-index: 10;
+}
+.secondHead{
+    display: flex;
+    font-size: 11px;
+    font-weight: 500;
+    background-color: #6C2699;
+    border-top: 1px solid #8d5aad;
+}
+.iconWithTit p {
+    color: rgba(255, 255, 255, 0.7);
+}
+.iconWithTit div:hover p {
+    color: #FF6166; 
+}
+.iconWithTit {
+    text-align: center;
+}
+.iconWithTit i {
+    font-size: 13px;
+    color: #fff;
+}
+.iconWithTit div:hover i {
+    color: #FF6166;
+}
+.search{
+    height: 40px;
+}
+.secondHead .searchingCot{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    padding: 10px 20px ;
+    height: 250px;
+    overflow: scroll;
+}
+.secondHead .searchingCot li{
+    font-size: 12px;
+    color: rgb(36, 36, 36);
+    padding: 0 0 15px 0;
+    font-weight: 400;
+}
+/* third head */
+.thirdHead{
+    background-color: #913bc7;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+}
+.angilal{
+    background-color: #FF6166;
+    width: 150px;
+}
+.angilal div:nth-child(1){
+    width: 30px;
+    height: 30px;
+    padding: 4px ;
+}
+.angilal i{
+    color: #FF6166;
+}
+.baraaSongolt a{
+   padding-left: 12px;
+}
+.baraaSongolt a:hover{
+    color: #FF6166;
+ }
+ /* Section One */
+ .sectionOne{
+    background-color: rgb(243, 243, 243);
+    margin-top: 120px;
+ }
+ .slide button span{
+    background-color: #FF6166;
+    border-radius: 50%; 
+}
+#time h1{
+    color: rgb(40, 84, 60);
+    font-size: 70px;
+    font-weight: 600;
+    text-align: center;
+    padding: 8px;
+    font-family: "Courier New", monospace;
+}
+#time p{
+    color: rgb(133, 133, 133);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+/* Section Two  */
+.sectionTwo{
+    height: 1000px;
+}
+
+/* SectionThree */
+.sectionThree{
+    background-color: rgb(243, 243, 243);
+    margin-bottom: 1000px;
+}
+.sectionThree .contain>p {
+    font-size: 24px;
+    font-weight: 600;
+}
+.tickedTit{
+    padding: 16px;
+}
+.sectionThree h3{
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+.sectionThree p{
+    margin:0 ;
+}
+.sectionThree img{
+    object-fit: cover;
+}
+.ticketButtun{
+    width: 200px;
+    transition-duration: 1s, 1s;
+}
+.ticketButtun:hover{
+    width: 220px;
+    height: 45px;
+}
+
+/* last New account section */
+.regisSection{
+    background-color: rgb(243, 243, 243);
+}
+.regisSection .registInner .warningTit{
+    color: rgb(158, 158, 158);
+    font-size: 12px;
+}
+.regisSection .registBtn{
+    background-color: #FF6166;
+    border: 0;
+    box-shadow: 1px 1px #888;
+    border-bottom: 1px solid  #ac4145 ;
+    color: white;
+}
+.regisSection .registBtn:hover{
+    background-color: #e77175;
+
+
+}
+/* footer */
+footer{
+    background-color: #6C2699;;
+}
+.footerOne{
+    background-color: rgb(145, 59, 199);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+}
+.footerOne h5{
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+}
+.footerOne ul li{
+    padding-top: 6px;
+}
+.footerOne a:hover{
+    color: rgba(255, 255, 255, 0.6);
+}
+.footerOne i{
+    font-size: 16px;
+    padding: 0 5px;
+}
+.footerTwo{
+    color: #fff;
+}
+.footerTwo a:hover{
+    color: #FF6166;
+}
+.footerTwo p{
+    color: rgba(255, 255, 255, 0.6) ;
+}
+.footerTwo .catgoBtn{
+    color: #FF6166;
+}
+.footerLast{
+    background-color: rgb(88, 22, 130);
+    padding: 12px 0;
+    color: rgba(255, 255, 255, 0.6)
+}
+.footerLast h3{
+    font-size: 16px;
+    margin: 0;
+}
+.footerLast p{
+    margin: 0;
+}
