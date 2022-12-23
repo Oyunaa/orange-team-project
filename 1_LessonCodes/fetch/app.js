@@ -27,6 +27,8 @@ fetch("https://restcountries.com/v3.1/all")
     });
   });
 
+console.log("countriesData", countriesData);
+
 let inputEl = document.getElementById("searchTxt");
 
 inputEl.addEventListener("input", (e) => {
@@ -43,5 +45,11 @@ inputEl.addEventListener("input", (e) => {
     divCountry.innerHTML += `<div>${item.name.common}</div>`;
   });
 
-  console.log(newARR);
+  for (let i = 0; i < newARR.length; i++) {
+    console.log(newARR[i].name);
+  }
+
+  for (let a of newARR) {
+    console.log(a.name);
+  }
 });

@@ -11,3 +11,14 @@ Promise.resolve().then(() => console.log(5));
 setTimeout(() => console.log(6));
 
 console.log(7);
+
+// 1;
+// 7;
+// 3;
+// 5;
+// 2;
+// 6;
+// 4;
+
+//1,7,2,6,3,5,4
+//
