@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0 auto;
+      max-width: 400px;
+      background-color: royalblue;
+    }
+
+    #task {
+      display: flex;
+    }
+
+    .container {
+      position: relative;
+    }
+
+    #tasks {
+      width: 400px;
+      height: 400px;
+      background-color: aqua;
+
+    }
+
+    .loading {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 400px;
+      height: 400px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="task">
+    <form action="">
+      <input type="text" id="taskInfo">
+      <input type="text" id="taskHour">
+      <button onclick="addTask(event)">Add</button>
+    </form>
+  </div>
+
+  <div class="container">
+    <div id="tasks">
+
+    </div>
+    <img class="loading" src="https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1-1.gif" alt="">
+  </div>
+
+  <script src="./l.js"></script>
+
+</body>
+
+</html>
