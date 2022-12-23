@@ -1,0 +1,16 @@
+* {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.container {
+    background: rgba(0, 204, 255, 0.18);
+    width: 20rem;
+    margin: auto;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+#proImg {
+    border-radius: 50%;
+}
