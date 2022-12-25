@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: #000;
+}
+main{
+    display: flex;
+    justify-content: space-between;
+}
+a{
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+}
+.row{
+    margin: 0;
+}
+.qoute{
+    padding-top: 250px;
+    text-align: center;
+    color: #7D3C98 ;
+}
+.qoute p{
+    font-size: 60px;
+    font-weight: 500;
+}
+.qoute h1{
+    font-size: 80px;
+    font-weight: 500;
+}
+.link{
+    padding-top: 250px;;
+}
+button{
+    background-color: #7D3C98;
+    border-radius: 5px;
+    border: 0;
+    display: block;
+    width: 150px ;
+    margin: 10px;
+    padding: 10px;
+}
+button:hover{
+    background-color:  #9b51ba;
+}
