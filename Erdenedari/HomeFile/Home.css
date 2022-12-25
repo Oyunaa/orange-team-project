@@ -12,6 +12,10 @@ a{
     text-decoration: none;
     color: #000;
     font-weight: 500;
+
+}
+a:hover{
+    color: black;
 }
 .row{
     margin: 0;
