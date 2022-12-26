@@ -23,6 +23,15 @@ function drawHTML(filteredData) {
   let row = "";
   sec2.innerHTML = "";
 
+  if (countriesData.length == 0) {
+    console.log("data hooson bna");
+  }
+
+  if (filteredData) {
+
+  } else {
+    // countriesData
+  }
   (filteredData
     ? filteredData.length == 0
       ? []
@@ -94,7 +103,6 @@ function sort(parameter) {
             ? -1
             : 1
       );
-
     } else if (parameter == "population") {
       countriesData.sort((a, b) => b.population - a.population);
     } else {
