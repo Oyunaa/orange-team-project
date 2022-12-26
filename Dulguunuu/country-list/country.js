@@ -6,9 +6,9 @@ let total = document.getElementById("total");
 let countriesData = [];
 let regionArr = [];
 let filteredCountriesData = [];
-const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-// let alphabetically = document.getElementById("alphabetically");
-// alphabetically.innerHTML = alphabet;
+const alphabet = ["A" , "B" , "C" , "D" , "E" , "F" , "G" , "H" , "I" , "J" , "K" , "L" , "M" , "N" , "O" , "P" , "Q" , "R" , "S" , "T" , "U" , "V" , "W" , "X" , "Y" , "Z"];
+let alphabetically = document.getElementById("alphabetically");
+alphabetically.innerHTML = alphabet;
 
 fillData();
 
