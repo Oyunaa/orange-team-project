@@ -1,34 +1,49 @@
-let sec1 = document.getElementById("section1");
-let sec2 = document.getElementById("section2");
+let sec1 = document.getElementById("search-section");
+let sec2 = document.getElementById("list-section");
 let select = document.getElementById("region");
-
 let input = document.getElementById("searchTxt");
-
+let total = document.getElementById("total");
 let countriesData = [];
+let filteredCountriesData = [];
 
-fetch("https://restcountries.com/v3.1/all")
-  .then((response) => response.json())
-  .then((data) => {
-    let row = "";
-    data.map((country) => {
-      row += `<div> <p> ${country.name.common}</p></div>`;
-    });
+fillData();
 
-    countriesData = [...data];
+function fillData() {
+  fetch("https://restcountries.com/v3.1/all")
+    .then((response) => response.json())
+    .then((data) => {
+      countriesData = [...data];
+      drawHTML();
+      fillRegion();
+    })
+    .catch((err) => console.log(err));
+}
 
-    sec2.innerHTML = row;
+function drawHTML(filteredData) {
+  let row = "";
+  sec2.innerHTML = "";
 
-    fillRegion();
+  if (countriesData.length == 0) {
+    console.log("data hooson bna");
+  }
+  (filteredData
+    ? filteredData.length == 0
+      ? []
+      : filteredData
+    : countriesData
+  ).map((country) => {
+    row += `<div class="col"> 
+  <a href="./country.html?countryname='${country.name.common}'&region=${country.region}">
+    <h6> ${country.name.common}</h6>
+  </a>
+  <span class="txt">Хүн амын тоо ${country.population}</span><br/>
+  <span class="txt">Газар нутгийн хэмжээ ${country.area}</span>
+</div>`;
+  });
 
-    // console.log(data);
-
-    // sec2;
-  })
-  .catch((err) => console.log(err));
-
-// for (let a of data) {
-//   console.log(a.name);
-// }
+  total.innerHTML = filteredData ? filteredData.length : countriesData.length;
+  sec2.innerHTML = row;
+}
 
 function fillRegion() {
   let arrRegion = [];
@@ -43,42 +58,71 @@ function fillRegion() {
 }
 
 select.addEventListener("change", (event) => {
-  console.log(event.target.value);
-
-  let newCountryArr = countriesData.filter(
-    (co) => co.region == event.target.value
-  );
-  sec2.innerHTML = "";
-  newCountryArr.map((item) => {
-    sec2.innerHTML += `<div> <p> ${item.name.common}</p></div>`;
+  let newCountryArr = countriesData.filter((co) => {
+    if (input.value.length > 0) {
+      return (
+        co.region == event.target.value && co.name.common.includes(input.value)
+      );
+    } else {
+      return co.region == event.target.value;
+    }
   });
+  drawHTML(newCountryArr);
 });
 
-function sort() {
+input.addEventListener("input", (e) => {
+  let newCountryArr = countriesData.filter((co) => {
+    if (select.value != "0") {
+      return (
+        co.name.common.includes(e.target.value) == true &&
+        co.region == select.value
+      );
+    } else {
+      return co.name.common.includes(e.target.value) == true;
+    }
+  });
+  drawHTML(newCountryArr);
+});
+
+function sort(parameter) {
   let sortEl = document.getElementById("sort");
 
-  // countriesData.sort((a) => a.region);
-  let sortedData = [];
-
-  sec2.innerHTML = "";
-  if (sortEl.innerHTML == "Дээшээ") {
-    // console.log(countriesData.sort((a, b) => b.population - a.population));
-    sortEl.innerHTML = "Доошоо";
-    // sortedData = [...countriesData.sort((a) => a.name.common)];
-    sec2.innerHTML = "";
-
-    countriesData
-      .sort((a, b) => b.area - a.area)
-      .map((item) => {
-        sec2.innerHTML += `<div> <p> ${item.name.common} - ${item.area}</p></div>`;
-      });
+  if (sortEl.innerHTML[sortEl.innerHTML.length - 1] == "↑") {
+    sortEl.innerHTML = sortEl.innerHTML.replace("↑", "↓");
+    if (parameter == "name") {
+      countriesData.sort((a, b) =>
+        a.name.common == b.name.common
+          ? 0
+          : a.name.common > b.name.common
+          ? -1
+          : 1
+      );
+    } else if (parameter == "population") {
+      countriesData.sort((a, b) => b.population - a.population);
+    } else {
+      countriesData.sort((a, b) => b.area - a.area);
+    }
   } else {
-    sec2.innerHTML = "";
-    sortEl.innerHTML = "Дээшээ";
-    countriesData
-      .sort((a, b) => a.area - b.area)
-      .map((item) => {
-        sec2.innerHTML += `<div> <p> ${item.name.common} - ${item.area}</p></div>`;
-      });
+    sortEl.innerHTML = sortEl.innerHTML.replace("↓", "↑");
+
+    if (parameter == "name") {
+      countriesData.sort((a, b) =>
+        a.name.common == b.name.common
+          ? 0
+          : a.name.common > b.name.common
+          ? 1
+          : -1
+      );
+    } else if (parameter == "population") {
+      countriesData.sort((a, b) => a.population - b.population);
+    } else {
+      countriesData.sort((a, b) => a.area - b.area);
+    }
   }
+
+  drawHTML();
+}
+
+function group(a) {
+  console.log(a);
 }
