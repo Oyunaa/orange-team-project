@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "orange-team-project",
+			"path": ".."
+		},
+		{
+			"name": "Enkhmanlai",
+			"path": "../../Enkhmanlai"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501
+	}
+}
