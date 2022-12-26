@@ -4,7 +4,11 @@ let select = document.getElementById("region");
 let input = document.getElementById("searchTxt");
 let total = document.getElementById("total");
 let countriesData = [];
+let regionArr = [];
 let filteredCountriesData = [];
+const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+// let alphabetically = document.getElementById("alphabetically");
+// alphabetically.innerHTML = alphabet;
 
 fillData();
 
@@ -26,6 +30,7 @@ function drawHTML(filteredData) {
   if (countriesData.length == 0) {
     console.log("data hooson bna");
   }
+
   (filteredData
     ? filteredData.length == 0
       ? []
@@ -55,6 +60,7 @@ function fillRegion() {
   for (let i = 0; i < arrRegion.length; i++) {
     select.innerHTML += `<option value="${arrRegion[i]}">${arrRegion[i]}</option>`;
   }
+  regionArr = [...arrRegion];
 }
 
 select.addEventListener("change", (event) => {
@@ -85,7 +91,9 @@ input.addEventListener("input", (e) => {
 });
 
 function sort(parameter) {
-  let sortEl = document.getElementById("sort");
+  let sortEl = document.getElementById("sortname");
+  let sortPopulation = document.getElementById("sortpopulation");
+  let sortArea = document.getElementById("sortarea");
 
   if (sortEl.innerHTML[sortEl.innerHTML.length - 1] == "↑") {
     sortEl.innerHTML = sortEl.innerHTML.replace("↑", "↓");
@@ -123,12 +131,56 @@ function sort(parameter) {
   drawHTML();
 }
 
-function group(region) {
-  let arrRegion = [];
-  countriesData.map((c) => {
-    if (!arrRegion.includes(c.region)) {
-      arrRegion.push(c.region);
-    }
-  });
-  console.log(arrRegion);
+function group(a) {
+  console.log(a);
+  if (a == "region") {
+    drawHTMLgroupByRegion();
+  }
+  else if (a == "letter") {
+    byAlphabet();
+  }
 }
+
+function drawHTMLgroupByRegion() {
+  let row = "";
+  for (let i = 0; i < regionArr.length; i++) {
+    //
+    row += `<h1>${regionArr[i]}</h1>`;
+
+    for (let y = 0; y < countriesData.length; y++) {
+      if (countriesData[y].region == regionArr[i]) {
+        row += `<div class="col"> 
+        <a href="./country.html?countryname='${countriesData[y].name.common}'&region=${countriesData[y].region}">
+          <h6> ${countriesData[y].name.common}</h6>
+        </a>
+        <span class="txt">Хүн амын тоо ${countriesData[y].population}</span><br/>
+        <span class="txt">Газар нутгийн хэмжээ ${countriesData[y].area}</span>
+      </div>`;
+      }
+    }
+  }
+
+  sec2.innerHTML = row;
+}
+
+
+function byAlphabet() {
+  let row = "";
+  for (let i = 0; i < alphabet.length; i++) {
+    row += `<h1>${alphabet[i]}</h1>`;
+
+    for (let y = 0; y < countriesData.length; y++) {
+      if (countriesData[y].name.common.charAt(0) == alphabet[i]) {
+        row += `<div class="col"> 
+        <a href="./country.html?countryname='${countriesData[y].name.common}'&region=${countriesData[y].region}">
+          <h6> ${countriesData[y].name.common}</h6>
+        </a>
+        <span class="txt">Хүн амын тоо ${countriesData[y].population}</span><br/>
+        <span class="txt">Газар нутгийн хэмжээ ${countriesData[y].area}</span>
+      </div>`
+      }
+    }
+  }
+  sec2.innerHTML = row;
+}
+
