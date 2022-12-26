@@ -5,36 +5,9 @@ let input = document.getElementById("searchTxt");
 let total = document.getElementById("total");
 let countriesData = [];
 let filteredCountriesData = [];
-const letters = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
+const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-fillData();
+fillData()
 
 function fillData() {
   fetch("https://restcountries.com/v3.1/all")
@@ -43,6 +16,7 @@ function fillData() {
       countriesData = [...data];
       drawHTML();
       fillRegion();
+      fillCountriesFirstLetter()
     })
     .catch((err) => console.log(err));
 }
@@ -178,6 +152,25 @@ function sortByRegion() {
       <span class="txt">Бүс ${countriesData[j].region}</span>
     </div>`;
       }
+    }
+  }
+}
+
+
+let alphabet = document.getElementById("alphabet");
+function fillCountriesFirstLetter() {
+  let countriesFirstLetterArr = [];
+  for (let j = 0; j < countriesData.length; j++) {
+    if (!countriesFirstLetterArr.includes(countriesData[j].name.common[0])) {
+      countriesFirstLetterArr.push(countriesData[j].name.common[0])
+    }
+  }
+  console.log(countriesFirstLetterArr);
+  for (let i = 0; i < letters.length; i++) {
+    if (countriesFirstLetterArr.includes(letters[i])) {
+      alphabet.innerHTML += `<div onclick = "sortByFirstLetter(${letters[i]})">${letters[i]} </div>`;
+    } else {
+      alphabet.innerHTML += `<div style="color:grey">${letters[i]} </div>`;
     }
   }
 }
