@@ -14,6 +14,7 @@ function fillData() {
     .then((response) => response.json())
     .then((data) => {
       countriesData = [...data];
+      console.log(countriesData);
       drawHTML();
       fillRegion();
     })
@@ -156,3 +157,32 @@ function drawHTMLgroupByRegion() {
 
   sec2.innerHTML = row;
 }
+
+function group(b){
+  console.log(b);
+  if(b == "letter"){
+drawHTMLgroupByLetter()
+  }
+}
+
+
+
+function drawHTMLgroupByLetter(){
+  let row = "";
+  let letterArr = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+  for (let i = 0; i < letterArr.length; i++) {
+
+    row += `<h1 class = "hii">${letterArr[i]}</h1>`;
+  for (let y = 0; y < countriesData.length; y++) {
+    if (countriesData[y].name.common.charAt(0) == letterArr[i]) {
+      row += `<div class="col"> 
+      <a href="./country.html?countryname='${countriesData[y].name.common}'&region=${countriesData[y].region}">
+        <h6> ${countriesData[y].name.common}</h6>
+      </a>
+      <span class="txt">Хүн амын тоо ${countriesData[y].population}</span><br/>
+      <span class="txt">Газар нутгийн хэмжээ ${countriesData[y].area}</span>
+    </div>`;
+    }
+  }
+  sec2.innerHTML = row;
+  }}
