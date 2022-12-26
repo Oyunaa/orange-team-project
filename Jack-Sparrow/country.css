@@ -27,3 +27,7 @@ justify-content: space-evenly;
   flex-direction: column;
   font-size: 1em;
 }
+.title{
+  display: block;
+  width: 100%;
+}

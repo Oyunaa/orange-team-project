@@ -5,6 +5,7 @@ let input = document.getElementById("searchTxt");
 let total = document.getElementById("total");
 let countriesData = [];
 let filteredCountriesData = [];
+let regionArr = [];
 
 fillData();
 
@@ -57,6 +58,7 @@ function fillRegion() {
   for (let i = 0; i < arrRegion.length; i++) {
     select.innerHTML += `<option value="${arrRegion[i]}">${arrRegion[i]}</option>`;
   }
+  regionArr = [...arrRegion];
 }
 
 select.addEventListener("change", (event) => {
@@ -124,17 +126,56 @@ function sort(parameter) {
 
   drawHTML();
 }
+function group(a) {
+  console.log(a);
+  if (a == "region") {
+    drawHTMLgroupByRegion();
+  }else if (a == "letter"){
+    drawHTMLgroupByAlpha()
+  }
+}
+function drawHTMLgroupByRegion() {
+  let row = "";
+  for (let i = 0; i < regionArr.length; i++) {
+    //
+    row += `<h1 class="title">${regionArr[i]}</h1>`;
 
-function groupContinent() {
-  
-  countriesData.map((country) => {
-    row += `<div class="col"> 
-            <a href="./country.html?countryname='${country.name.common}'&region=${country.region}">
-              <h6> ${country.name.common}</h6>
-            </a>
-            <span class="txt">Хүн амын тоо ${country.population}</span><br/>
-            <span class="txt">Талбай:  ${country.area}</span>
-            <span class="txt">Тив : ${country.continents}</span>
-          </div>`;
-  });
+    for (let y = 0; y < countriesData.length; y++) {
+      if (countriesData[y].region == regionArr[i]) {
+        row += `<div class="col"> 
+        <a href="./country.html?countryname='${countriesData[y].name.common}'&region=${countriesData[y].region}">
+          <h6> ${countriesData[y].name.common}</h6>
+        </a>
+        <span class="txt">Хүн амын тоо ${countriesData[y].population}</span><br/>
+        <span class="txt">Газар нутгийн хэмжээ ${countriesData[y].area}</span>
+        <span class="txt">Тив : ${countriesData[y].continents}</span>
+      </div>`;
+      }
+    }
+  }
+
+  sec2.innerHTML = row;
+}
+function drawHTMLgroupByAlpha() {
+  let row = "";
+  let alpha = ["A", "B", "C", "D", "E", "F", "G", 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+  for (let i = 0; i < alpha.length; i++) {
+    //
+    row += `<h1 class="title">${alpha[i]}</h1>`;
+
+    for (let y = 0; y < countriesData.length; y++) {
+      if (countriesData[y].name.common.charAt(0) == alpha[i]) {
+        row += `<div class="col"> 
+        <a href="./country.html?countryname='${countriesData[y].name.common}'&region=${countriesData[y].region}">
+          <h6> ${countriesData[y].name.common}</h6>
+        </a>
+        <span class="txt">Хүн амын тоо ${countriesData[y].population}</span><br/>
+        <span class="txt">Газар нутгийн хэмжээ ${countriesData[y].area}</span>
+        <span class="txt">Тив : ${countriesData[y].continents}</span>
+      </div>`;
+      }
+    }
+  }
+
+  sec2.innerHTML = row;
 }
