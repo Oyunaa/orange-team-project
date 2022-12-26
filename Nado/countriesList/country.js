@@ -168,21 +168,23 @@ function fillCountriesFirstLetter() {
   console.log(countriesFirstLetterArr);
   for (let i = 0; i < letters.length; i++) {
     if (countriesFirstLetterArr.includes(letters[i])) {
-      alphabet.innerHTML += `<div onclick = "sortByFirstLetter(${letters[i]})">${letters[i]} </div>`;
+      alphabet.innerHTML += `<div onclick = "sortByFirstLetter('${letters[i]}')">${letters[i]} </div>`;
     } else {
       alphabet.innerHTML += `<div style="color:grey">${letters[i]} </div>`;
     }
   }
 }
 
-function sortByFirstLetter() {
+function sortByFirstLetter(para) {
   sec2.innerHTML = ""
   for (let i = 0; i < letters.length; i++) {
-    sec2.innerHTML += `<div id="${i}"><h1>${letters[i]}</h1> </div>`;
-    let listSortedByLetter = document.getElementById(i);
-    for (let j = 0; j < countriesData.length; j++) {
-      if (countriesData[j].name.common.charAt(0) == letters[i]) {
-        listSortedByLetter.innerHTML += `<div class="col"> 
+    if (letters[i] == para) {
+      sec2.innerHTML += `<div id="${i}"><h1>${letters[i]}</h1> </div>`;
+      let listSortedByLetter = document.getElementById(i);
+
+      for (let j = 0; j < countriesData.length; j++) {
+        if (countriesData[j].name.common.charAt(0) == para) {
+          listSortedByLetter.innerHTML += `<div class="col"> 
       <a href="./country.html?countryname=${countriesData[j].name.common}&region=${countriesData[j].region}">
         <h6> ${countriesData[j].name.common}</h6>
       </a>
@@ -190,6 +192,7 @@ function sortByFirstLetter() {
       <span class="txt">Газар нутгийн хэмжээ ${countriesData[j].area}</span>
       <span class="txt">Бүс ${countriesData[j].region}</span>
     </div>`;
+        }
       }
     }
   }
