@@ -24,13 +24,13 @@ function drawHTML(filteredData) {
   let row = "";
   sec2.innerHTML = "";
 
-<<<<<<< HEAD
-=======
-  if (countriesData.length == 0) {
-    console.log("data hooson bna");
-  }
+  // <<<<<<< HEAD
+  // =======
+  //   if (countriesData.length == 0) {
+  //     console.log("data hooson bna");
+  //   }
 
->>>>>>> ca4de809dc23af4e03f80d5d3a24cb6504145d87
+  // >>>>>>> ca4de809dc23af4e03f80d5d3a24cb6504145d87
   (filteredData
     ? filteredData.length == 0
       ? []
