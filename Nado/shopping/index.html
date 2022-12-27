@@ -21,10 +21,10 @@
             </div>
             <div id="filters">
                 <h3>Filters</h3>
-                <input type="radio" id="priceFilter1" name="priceFilter" value="30">
-                <label for="priceFilter1">Price: Low -> High</label><br>
-                <input type="radio" id="priceFilter2" name="priceFilter" value="60">
-                <label for="priceFilter2">Price: High -> Low</label><br>
+                <input type="radio" id="priceFilter1" name="priceFilter" value="toHigh">
+                <label for="priceFilter1" onclick="sortToHigh()">Price: Low -> High</label><br>
+                <input type="radio" id="priceFilter2" name="priceFilter" value="toLow">
+                <label for="priceFilter2" onclick="sortToLow()">Price: High -> Low</label><br>
             </div>
         </section>
         <section id="products">

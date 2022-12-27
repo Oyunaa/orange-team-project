@@ -11,7 +11,7 @@ function filldata() {
         .then((res) => res.json())
         .then((data) => {
             productData = { ...data };
-            writeInnerHTML();
+            writeInnerHTML(productData.products);
         });
 }
 function fillCategories() {
@@ -23,33 +23,74 @@ function fillCategories() {
         });
 }
 
-function writeInnerHTML() {
-    for (let i = 0; i < productData.products.length; i++) {
+function writeInnerHTML(a) {
+    for (let i = 0; i < a.length; i++) {
         products.innerHTML += `
-        <div class="productCard">
-            <img src="${productData.products[i].thumbnail}" alt="pic" width="300px">
-            <h3 class="productTitle">${productData.products[i].title}</h3>
+        <a href="productDetail.html?productID=${a[i].id}" class="productCard">
+            <img src="${a[i].thumbnail}" alt="pic" width="300px">
+            <h3 class="productTitle">${a[i].title}</h3>
             <div class="productPriceRow">
-                <div class="productPrice">$${productData.products[i].price}</div>
-                <div class="productDiscount">${productData.products[i].discountPercentage}%</div>
+                <div class="productPrice">$${a[i].price}</div>
+                <div class="productDiscount">${a[i].discountPercentage}%</div>
             </div>
-            <div class="productDiscription">${productData.products[i].description.substr(0, 60)}...</div>
+            <div class="productDiscription">${a[i].description.substr(0, 60)}...</div>
             <div class="productRatingRow">
-                <div>${productData.products[i].rating}/5.0</div>    
+                <div>${a[i].rating}/5.0</div>    
                 <button class="addCart">Add Cart</button>
             </div>
-        </div>`
+        </a>`
     }
 }
 
 function writeCategoties() {
     for (let i = 0; i < productCategoriesData.length; i++) {
-        categories.innerHTML += `<div onclick="sortByCategories(${productCategoriesData[i]} ">${productCategoriesData[i]}</div>`
+        categories.innerHTML += `<span onclick="sortByCategories('${productCategoriesData[i]}')">${productCategoriesData[i]}</span><br>`
     }
 }
 
 function sortByCategories(para) {
-
+    products.innerHTML = "";
+    for (let i = 0; i < productData.products.length; i++) {
+        if (productData.products[i].category == para) {
+            products.innerHTML += `
+            <a href="productDetail.html?producTitle=${productData.products[i].title}" class="productCard">
+                <img src="${productData.products[i].thumbnail}" alt="pic" width="300px">
+                <h3 class="productTitle">${productData.products[i].title}</h3>
+                <div class="productPriceRow">
+                    <div class="productPrice">$${productData.products[i].price}</div>
+                    <div class="productDiscount">${productData.products[i].discountPercentage}%</div>
+                </div>
+                <div class="productDiscription">${productData.products[i].description.substr(0, 60)}...</div>
+                <div class="productRatingRow">
+                    <div>${productData.products[i].rating}/5.0</div>
+                    <button class="addCart">Add Cart</button>
+                </div>
+            </a>`
+        }
+    }
 }
 
+let input = document.getElementsByTagName("input")[0];
+let newProductData = "";
+
+input.addEventListener("input", (a) => {
+    products.innerHTML = "";
+    newProductData = productData.products.filter((ab) => {
+        return ab.title.includes(a.target.value) == true;
+    })
+    writeInnerHTML(newProductData);
+    console.log(newProductData)
+})
+
+function sortToHigh() {
+    products.innerHTML = "";
+    productData.products.sort((a, b) => a.price - b.price);
+    writeInnerHTML(productData.products);
+}
+
+function sortToLow() {
+    products.innerHTML = "";
+    productData.products.sort((a, b) => b.price - a.price);
+    writeInnerHTML(productData.products);
+}
 

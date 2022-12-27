@@ -85,3 +85,8 @@ img {
 #categories.div {
     padding-left: 50px;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}
