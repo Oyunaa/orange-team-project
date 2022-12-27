@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+}
+
+main {
+    max-width: 1700px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+#products {
+    display: flex;
+    max-width: 1400px;
+    flex-wrap: wrap;
+}
+
+.productCard {
+    width: 250px;
+    height: 450px;
+    margin: 10px;
+    border: 2px solid rgb(201, 201, 201);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+img {
+    width: 230px;
+    height: 190px;
+    border-radius: 20px;
+}
+
+.productRatingRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.productPriceRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addCart {
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(124, 124, 153);
+    border-radius: 10px;
+    color: rgb(105, 105, 142);
+}
+
+#aside {
+    font-size: 25px;
+    margin-right: 60px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#searchInput {
+    width: 80%;
+    border: 2px solid rgb(124, 124, 153);
+    border-radius: 20px;
+    height: 40px;
+    font-size: 20px;
+    padding-left: 15px;
+}
+
+#searchInputBtn {
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(124, 124, 153);
+    border-radius: 20px;
+    color: rgb(105, 105, 142);
+    height: 40px;
+    width: 80px;
+    font-size: 20px;
+}
+
+#categories {
+    width: 300px;
+}
+
+#categories.div {
+    padding-left: 50px;
+}
