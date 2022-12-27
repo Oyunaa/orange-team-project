@@ -160,22 +160,25 @@ function drawHTMLgroupByAlpha() {
   let row = "";
   let alpha = ["A", "B", "C", "D", "E", "F", "G", 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
   for (let i = 0; i < alpha.length; i++) {
-    //
-    row += `<h1 class="title">${alpha[i]}</h1>`;
-
-    for (let y = 0; y < countriesData.length; y++) {
-      if (countriesData[y].name.common.charAt(0) == alpha[i]) {
+    row += `<button id="btn${i}">${alpha[i]}</button>`;
+    let btn = document.getElementsByClassName("btn")  
+  }
+  let alphaBet=[]
+  alphaBet = [...countriesData]
+  for (let y = 0; y < alphaBet.length; y++) {
+    if (document.getElementById(`"btn${y}"`).value == alpha[0]) {
+      console.log(document.getElementById(`"btn${y}"`).value)
         row += `<div class="col"> 
-        <a href="./country.html?countryname='${countriesData[y].name.common}'&region=${countriesData[y].region}">
-          <h6> ${countriesData[y].name.common}</h6>
+        <a href="./country.html?countryname='${alphaBet[y].name.common}'&region=${alphaBet[y].region}">
+          <h6> ${alphaBet[y].name.common}</h6>
         </a>
-        <span class="txt">Хүн амын тоо ${countriesData[y].population}</span><br/>
-        <span class="txt">Газар нутгийн хэмжээ ${countriesData[y].area}</span>
-        <span class="txt">Тив : ${countriesData[y].continents}</span>
+        <span class="txt">Хүн амын тоо ${alphaBet[y].population}</span><br/>
+        <span class="txt">Газар нутгийн хэмжээ ${alphaBet[y].area}</span>
+        <span class="txt">Тив : ${alphaBet[y].continents}</span>
       </div>`;
       }
     }
-  }
+  
 
   sec2.innerHTML = row;
 }
