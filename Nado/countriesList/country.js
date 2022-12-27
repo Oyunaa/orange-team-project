@@ -5,36 +5,9 @@ let input = document.getElementById("searchTxt");
 let total = document.getElementById("total");
 let countriesData = [];
 let filteredCountriesData = [];
-const letters = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
+const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-fillData();
+fillData()
 
 function fillData() {
   fetch("https://restcountries.com/v3.1/all")
@@ -43,6 +16,7 @@ function fillData() {
       countriesData = [...data];
       drawHTML();
       fillRegion();
+      fillCountriesFirstLetter()
     })
     .catch((err) => console.log(err));
 }
@@ -182,14 +156,35 @@ function sortByRegion() {
   }
 }
 
-function sortByFirstLetter() {
+
+let alphabet = document.getElementById("alphabet");
+function fillCountriesFirstLetter() {
+  let countriesFirstLetterArr = [];
+  for (let j = 0; j < countriesData.length; j++) {
+    if (!countriesFirstLetterArr.includes(countriesData[j].name.common[0])) {
+      countriesFirstLetterArr.push(countriesData[j].name.common[0])
+    }
+  }
+  console.log(countriesFirstLetterArr);
+  for (let i = 0; i < letters.length; i++) {
+    if (countriesFirstLetterArr.includes(letters[i])) {
+      alphabet.innerHTML += `<div onclick = "sortByFirstLetter('${letters[i]}')">${letters[i]} </div>`;
+    } else {
+      alphabet.innerHTML += `<div style="color:grey">${letters[i]} </div>`;
+    }
+  }
+}
+
+function sortByFirstLetter(para) {
   sec2.innerHTML = ""
   for (let i = 0; i < letters.length; i++) {
-    sec2.innerHTML += `<div id="${i}"><h1>${letters[i]}</h1> </div>`;
-    let listSortedByLetter = document.getElementById(i);
-    for (let j = 0; j < countriesData.length; j++) {
-      if (countriesData[j].name.common.charAt(0) == letters[i]) {
-        listSortedByLetter.innerHTML += `<div class="col"> 
+    if (letters[i] == para) {
+      sec2.innerHTML += `<div id="${i}"><h1>${letters[i]}</h1> </div>`;
+      let listSortedByLetter = document.getElementById(i);
+
+      for (let j = 0; j < countriesData.length; j++) {
+        if (countriesData[j].name.common.charAt(0) == para) {
+          listSortedByLetter.innerHTML += `<div class="col"> 
       <a href="./country.html?countryname=${countriesData[j].name.common}&region=${countriesData[j].region}">
         <h6> ${countriesData[j].name.common}</h6>
       </a>
@@ -197,6 +192,7 @@ function sortByFirstLetter() {
       <span class="txt">Газар нутгийн хэмжээ ${countriesData[j].area}</span>
       <span class="txt">Бүс ${countriesData[j].region}</span>
     </div>`;
+        }
       }
     }
   }
