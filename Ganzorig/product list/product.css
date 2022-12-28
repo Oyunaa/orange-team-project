@@ -1,0 +1,55 @@
+#icon div{
+    background: linear-gradient(90deg, #2979FF 0%, #4C589E 100%);
+border-radius: 6px;
+
+}
+#header h3{
+    font-size: 32px;
+line-height: 36px;
+/* or 112% */
+color: #fff;
+display: flex;
+align-items: center;
+text-align: center
+}
+#header h5{
+    font-size: 24px;
+line-height: 36px;
+/* identical to box height, or 150% */
+
+display: flex;
+align-items: center;
+
+/* Blue / 100 */
+
+color: #0C2146;
+
+}
+#cart{
+    box-shadow: 0px 2px 4px rgba(27, 78, 163, 0.2), 0px 4px 8px rgba(41, 121, 255, 0.2);
+}
+#aside{
+    list-style: none;
+}
+#aside li{
+   padding-bottom: 30px;
+}
+#filter{
+    box-shadow: 1px 1px 5px #ccc;
+    border: 1px solid #ccc;
+    border-top: none;
+
+}
+#checkbox{
+    background-color: #F7F7FA;
+}
+img{object-fit: contain;}
+#dicsount{
+    color: #37833B;
+}
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  } 
