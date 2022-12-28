@@ -26,9 +26,11 @@ function fillCategories() {
 function writeInnerHTML(a) {
     for (let i = 0; i < a.length; i++) {
         products.innerHTML += `
-        <a href="productDetail.html?productID=${a[i].id}" class="productCard">
-            <img src="${a[i].thumbnail}" alt="pic" width="300px">
+        <div  class="productCard">
+        <a href="productDetail.html?productID=${a[i].id}">
+        <img src="${a[i].thumbnail}" alt="pic" width="300px">
             <h3 class="productTitle">${a[i].title}</h3>
+        </a>    
             <div class="productPriceRow">
                 <div class="productPrice">Price: $${a[i].price}</div>
                 <div class="productDiscount">Discount: ${a[i].discountPercentage}%</div>
@@ -38,7 +40,7 @@ function writeInnerHTML(a) {
                 <div>Rating: ${a[i].rating}/5.0</div>    
                 <button class="addCart" onclick="addToCart(${a[i].id})">Add Cart</button>
             </div>
-        </a>`
+        </div>`
     }
 }
 
@@ -53,19 +55,21 @@ function sortByCategories(para) {
     for (let i = 0; i < productData.products.length; i++) {
         if (productData.products[i].category == para) {
             products.innerHTML += `
-            <a href="productDetail.html?productID=${productData.products[i].id}}" class="productCard">
-                <img src="${productData.products[i].thumbnail}" alt="pic" width="300px">
-                <h3 class="productTitle">${productData.products[i].title}</h3>
-                <div class="productPriceRow">
-                    <div class="productPrice">Price: $${productData.products[i].price}</div>
-                    <div class="productDiscount">Discount: ${productData.products[i].discountPercentage}%</div>
-                </div>
-                <div class="productDiscription">${productData.products[i].description.substr(0, 60)}...</div>
-                <div class="productRatingRow">
-                    <div>Rating: ${productData.products[i].rating}/5.0</div>
-                    <button class="addCart" onclick="addToCart(${productData.products[i].id})">Add Cart</button>
-                </div>
-            </a>`
+            <div  class="productCard">
+        <a href="productDetail.html?productID=${productData.products[i].id}">
+        <img src="${productData.products[i].thumbnail}" alt="pic" width="300px">
+            <h3 class="productTitle">${productData.products[i].title}</h3>
+        </a>    
+            <div class="productPriceRow">
+                <div class="productPrice">Price: $${productData.products[i].price}</div>
+                <div class="productDiscount">Discount: ${productData.products[i].discountPercentage}%</div>
+            </div>
+            <div class="productDiscription">${productData.products[i].description.substr(0, 60)}...</div>
+            <div class="productRatingRow">
+                <div>Rating: ${productData.products[i].rating}/5.0</div>    
+                <button class="addCart" onclick="addToCart(${productData.products[i].id})">Add Cart</button>
+            </div>
+        </div>`
         }
     }
 }
@@ -93,5 +97,47 @@ function sortToLow() {
     writeInnerHTML(productData.products);
 }
 
+let addedToCart = [];
+let bigCart = document.getElementById("bigCart")
 
+function addToCart(para) {
+    productData.products.map(c => {
+        if (c.id == para) {
+            addedToCart.push(c);
+        }
+        return addedToCart;
+    })
+    writeCartInnerHTML();
+}
 
+function writeCartInnerHTML() {
+    let cartRow = `<div id="cartHeaderRow"><div id="cartHeaderRowProduct">Product</div><div id="cartHeaderRowPrice">Price</div></div>`;
+    let totalPrice = 0;
+    addedToCart.map((c, b) => {
+        cartRow += `<div class="cartRow">
+        <img class="cartItemImg"src=${c.thumbnail}>
+        <div class="cartItemTitle">${c.title}</div>
+        <span class="removeFromCart" onclick="removeItemFromCart(${b})">Remove</span>
+        <div class="cartItemPrice">$${c.price}</div>
+        </div>`
+        totalPrice += c.price;
+    })
+    bigCart.innerHTML = cartRow + `<div id="totalPrice">Total Price:$${totalPrice}</div>`;
+}
+
+function removeItemFromCart(para) {
+    addedToCart.splice(para, 1);
+    writeCartInnerHTML();
+}
+
+let cart = document.getElementById("cart");
+
+function openCart() {
+    bigCart.style = "display:block"
+    cart.setAttribute("onclick", "closeCart()");
+}
+
+function closeCart() {
+    bigCart.style = "display:none"
+    cart.setAttribute("onclick", "openCart()");;
+}
