@@ -3,7 +3,7 @@ const params = new URLSearchParams(window.location.search);
 
 console.log(params);
 
-const productID = params.get("productID");
+let productID = params.get("productID");
 
 console.log(productID);
 

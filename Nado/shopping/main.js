@@ -30,13 +30,13 @@ function writeInnerHTML(a) {
             <img src="${a[i].thumbnail}" alt="pic" width="300px">
             <h3 class="productTitle">${a[i].title}</h3>
             <div class="productPriceRow">
-                <div class="productPrice">$${a[i].price}</div>
-                <div class="productDiscount">${a[i].discountPercentage}%</div>
+                <div class="productPrice">Price: $${a[i].price}</div>
+                <div class="productDiscount">Discount: ${a[i].discountPercentage}%</div>
             </div>
             <div class="productDiscription">${a[i].description.substr(0, 60)}...</div>
             <div class="productRatingRow">
-                <div>${a[i].rating}/5.0</div>    
-                <button class="addCart">Add Cart</button>
+                <div>Rating: ${a[i].rating}/5.0</div>    
+                <button class="addCart" onclick="addToCart(${a[i].id})">Add Cart</button>
             </div>
         </a>`
     }
@@ -53,17 +53,17 @@ function sortByCategories(para) {
     for (let i = 0; i < productData.products.length; i++) {
         if (productData.products[i].category == para) {
             products.innerHTML += `
-            <a href="productDetail.html?producTitle=${productData.products[i].title}" class="productCard">
+            <a href="productDetail.html?productID=${productData.products[i].id}}" class="productCard">
                 <img src="${productData.products[i].thumbnail}" alt="pic" width="300px">
                 <h3 class="productTitle">${productData.products[i].title}</h3>
                 <div class="productPriceRow">
-                    <div class="productPrice">$${productData.products[i].price}</div>
-                    <div class="productDiscount">${productData.products[i].discountPercentage}%</div>
+                    <div class="productPrice">Price: $${productData.products[i].price}</div>
+                    <div class="productDiscount">Discount: ${productData.products[i].discountPercentage}%</div>
                 </div>
                 <div class="productDiscription">${productData.products[i].description.substr(0, 60)}...</div>
                 <div class="productRatingRow">
-                    <div>${productData.products[i].rating}/5.0</div>
-                    <button class="addCart">Add Cart</button>
+                    <div>Rating: ${productData.products[i].rating}/5.0</div>
+                    <button class="addCart" onclick="addToCart(${productData.products[i].id})">Add Cart</button>
                 </div>
             </a>`
         }
@@ -79,7 +79,6 @@ input.addEventListener("input", (a) => {
         return ab.title.includes(a.target.value) == true;
     })
     writeInnerHTML(newProductData);
-    console.log(newProductData)
 })
 
 function sortToHigh() {
@@ -93,4 +92,6 @@ function sortToLow() {
     productData.products.sort((a, b) => b.price - a.price);
     writeInnerHTML(productData.products);
 }
+
+
 

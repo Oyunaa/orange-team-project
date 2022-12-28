@@ -68,7 +68,7 @@ img {
     padding-left: 15px;
 }
 
-#searchInputBtn {
+#cart {
     background-color: rgb(255, 255, 255);
     border: 2px solid rgb(124, 124, 153);
     border-radius: 20px;
@@ -76,6 +76,9 @@ img {
     height: 40px;
     width: 80px;
     font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #categories {
@@ -89,4 +92,18 @@ img {
 a {
     text-decoration: none;
     color: black;
+}
+
+#search {
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+#bigCart {
+    border: 2px black solid;
+    width: 1200px;
+    border-radius: 20px;
+    position: absolute;
 }
