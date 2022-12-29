@@ -98,7 +98,8 @@ function sortToLow() {
 }
 
 let addedToCart = [];
-let bigCart = document.getElementById("bigCart")
+let bigCart = document.getElementById("bigCart");
+let cartProductCount = document.getElementById("cartProductCount");
 
 function addToCart(para) {
     productData.products.map(c => {
@@ -108,6 +109,7 @@ function addToCart(para) {
         return addedToCart;
     })
     writeCartInnerHTML();
+    cartProductCount.innerHTML = `${addedToCart.length}`;
 }
 
 function writeCartInnerHTML() {
@@ -141,3 +143,5 @@ function closeCart() {
     bigCart.style = "display:none"
     cart.setAttribute("onclick", "openCart()");;
 }
+
+
