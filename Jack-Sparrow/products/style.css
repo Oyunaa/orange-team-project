@@ -26,10 +26,43 @@
     width: 23% !important;
     height: 450px;
 }
+#productSection .productCart:hover{
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
 .productCart .img{
     width: 100%;
     height: 150px;
 }
 .card-body{
     height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+.card-title{
+    font-size: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.price{
+    font-size: 1rem;
+    font-weight: 700;
+}
+.desc{
+    font-size: 0.7rem;
+    height: 50px;
+    color: grey;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.discount{
+    background-color: green;
+    opacity: 80%;
+    display: block;
+    font-size: 0.6rem;
+    text-align: center;
+    width: 50px;
+    border-radius: 5px;
+    margin: 0;
+    align-self: end;
 }

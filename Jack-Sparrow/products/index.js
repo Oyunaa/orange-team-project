@@ -31,16 +31,16 @@ function drawCat(productsCategory) {
 function drawPro() {
     let row = "";
     pro.products.map(item => 
-        row += `<div class="card productCart" style="width: 18rem;">
+        row += `<div class="card productCart">
         <img src="${item.thumbnail}" class="card-img-top img" alt="...">
         <div class="card-body">
           <h5 class="card-title">${item.title}title</h5>
-          <p class="card-text">${item.description}desc</p>
-          <p class="card-text">${item.price}price</p>
-          <p class="card-text">${item.discountPercentage}discount</p>
-          <p class="card-text">${item.stock}stock</p>
-          <p class="card-text">${item.rating}rating</p>
-          <a href="#" class="btn btn-primary">Book</a>
+          <p class="card-text desc">${item.description}</p>
+          <p class="card-text discount">${item.discountPercentage}% OFF</p>
+          <p class="card-text price">$${item.price}</p>
+          <p class="card-text stock">${item.stock}</p>
+          <p class="card-text rating">Rating : ${item.rating}</p>
+          <a href="#" class="btn book btn-primary">Book</a>
         </div>
       </div>`
     )

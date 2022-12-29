@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <h1>New Product</h1>
+            <div class="row">
+                <div class="col-md-12">
+                    <form>
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Product category</label>
+                            <select name="category" id="category">
+                                <option value="0">Choose</option>
+                                <option value="1">Phone</option>
+                                <option value="2">Skin care</option>
+                                <option value="3">Home</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Product name</label>
+                            <input type="text" class="form-control" id="title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Product price</label>
+                            <input type="number" class="form-control" id="price">
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Product image</label>
+                            <input type="file" class="form-control" id="image">
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Is special</label>
+                                <div class="form-check">
+                                    <label for="Yes" class="form-check-label">Yes</label>
+                                    <input type="radio" name="isSpecial" class="form-check-input" id="Yes">
+                                </div>
+                                <div class="form-check">
+                                    <label for="No" class="form-check-label">No</label>
+                                    <input type="radio" name="isSpecial" class="form-check-input" id="No">
+                                </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Yes" class="form-check-label">choose day</label>
+                            <div class="form-check">
+                                <label for="1" class="form-check-label">Monday</label>
+                                <input type="checkbox" name="days" class="form-check-input" value="1">
+                            </div>
+                            <div class="form-check">
+                                <label for="2" class="form-check-label">Tuesday</label>
+                                <input type="checkbox" name="days" class="form-check-input" value="2">
+                            </div>
+                            <div class="form-check">
+                                <label for="3" class="form-check-label">Wed</label>
+                                <input type="checkbox" name="days" class="form-check-input" value="3">
+                            </div>
+                            <div class="form-check">
+                                <label for="4" class="form-check-label">Thu</label>
+                                <input type="checkbox" name="days" class="form-check-input" value="4">
+                            </div>
+                            <div class="form-check">
+                                <label for="5" class="form-check-label">fri</label>
+                                <input type="checkbox" name="days" class="form-check-input" value="5">
+                            </div>
+                            <div class="form-check">
+                                <label for="6" class="form-check-label">sat</label>
+                                <input type="checkbox" name="days" class="form-check-input" value="6">
+                            </div>
+                            <div class="form-check">
+                                <label for="7" class="form-check-label">sun</label>
+                                <input type="checkbox" name="days" class="form-check-input" value="7">
+                            </div>
+                        </div>
+                        <button id="save">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="./btn.js"></script>
+    <script src="./index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
