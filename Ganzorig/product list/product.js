@@ -19,7 +19,7 @@ fetch("https://dummyjson.com/products")
     console.log(categoryData);
     categoryData.map((categoryName)=>{
         row+=`<li>
-        <a href="#" class="text-decoration-none text-secondary">${categoryName}</a>
+        <button onclick="sortCategory('${categoryName}')" class="border border-white bg-white text-secondary " >${categoryName}</button>
         </li>`
       
     })
@@ -38,7 +38,7 @@ function drawHTML(){
             <img src="${thumbnail}"> 
         </div>
         <div class="card-body ">
-                <h5 class="card-title">${title}</h5>
+                <h5 class="card-title text-truncate">${title}</h5>
                 <p class="text-truncate">${description}</p>
             <div class="price d-flex justify-content-between">
                 <p class="card-price">${price}$</p>   
@@ -54,10 +54,26 @@ function drawHTML(){
     })
     right.innerHTML = row
 }
+let highEl = document.getElementById("high")
+let lowEl = document.getElementById("low")
+function sortedData(parameter){
+    if(parameter == "high"){
+        productData.sort((a , b)=>a.price - b.price)
+    }else if(parameter == "low"){
+        productData.sort((a,b)=> b.price - a.price)
+    }
+drawHTML()
+}
+function sortCategory(cat){
+ let arr = [];
+    console.log(cat);
+    for(let y= 0; productData.lenght; y++){
+        if(cat == productData[y].category){
+         arr.push(productData[y])
+        }
+    }
+    drawHTML(arr)
+ }
 
 
 
-
-
-
-// {id, title, price, rating, discountPercentage, description} index
