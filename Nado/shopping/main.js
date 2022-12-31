@@ -2,18 +2,20 @@ let productData = [];
 let productCategoriesData = [];
 let products = document.getElementById("products");
 let categories = document.getElementById("categories");
+let pagination = document.getElementById("pagination");
 
 filldata();
 fillCategories();
 
 function filldata() {
-    fetch('https://dummyjson.com/products')
+    fetch('https://dummyjson.com/products?limit=10&skip10')
         .then((res) => res.json())
         .then((data) => {
             productData = { ...data };
             writeInnerHTML(productData.products);
         });
 }
+
 function fillCategories() {
     fetch('https://dummyjson.com/products/categories')
         .then((res) => res.json())
@@ -46,7 +48,7 @@ function writeInnerHTML(a) {
 
 function writeCategoties() {
     for (let i = 0; i < productCategoriesData.length; i++) {
-        categories.innerHTML += `<span onclick="sortByCategories('${productCategoriesData[i]}')">${productCategoriesData[i]}</span><br>`
+        categories.innerHTML += `<span onclick="sortByCategories('${productCategoriesData[i]}')" id="${productCategoriesData[i]}" style = "background-color: white; color: black">${productCategoriesData[i]}</span><br>`
     }
 }
 
@@ -72,6 +74,15 @@ function sortByCategories(para) {
         </div>`
         }
     }
+
+
+    categories.innerHTML = "";
+    writeCategoties();
+    let categoryEl = document.getElementById(para);
+    categoryEl.style.backgroundColor = "#667c9b";
+    categoryEl.style.color = "white";
+    categoryEl.style.borderRadius = "20px";
+    categoryEl.style.padding = "0px 10px 0px 10px"
 }
 
 let input = document.getElementsByTagName("input")[0];
@@ -100,6 +111,7 @@ function sortToLow() {
 let addedToCart = [];
 let bigCart = document.getElementById("bigCart");
 let cartProductCount = document.getElementById("cartProductCount");
+cartProductCount.innerHTML = `${addedToCart.length}`;
 
 function addToCart(para) {
     productData.products.map(c => {
@@ -130,13 +142,17 @@ function writeCartInnerHTML() {
 function removeItemFromCart(para) {
     addedToCart.splice(para, 1);
     writeCartInnerHTML();
+    cartProductCount.innerHTML = `${addedToCart.length}`;
 }
 
 let cart = document.getElementById("cart");
 
 function openCart() {
-    bigCart.style = "display:block"
-    cart.setAttribute("onclick", "closeCart()");
+    if (addedToCart.length > 0) {
+        bigCart.style = "display:block"
+        cart.setAttribute("onclick", "closeCart()");
+    }
+
 }
 
 function closeCart() {
@@ -144,4 +160,6 @@ function closeCart() {
     cart.setAttribute("onclick", "openCart()");;
 }
 
-
+for (let i = 0; i < productData.total / 10; i++) {
+    pagination.innerHTML += `<a href="./index.html?pageNumber=${i}>${i + 1}</a>`;
+}
