@@ -123,12 +123,12 @@ a {
 
 #bigCart {
     border: 2px black solid;
-    width: 1200px;
+    width: 1650px;
     border-radius: 20px;
     position: absolute;
     background-color: aliceblue;
     padding: 20px;
-    top: 50px;
+    top: 90px;
     display: none;
 }
 

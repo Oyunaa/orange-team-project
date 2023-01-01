@@ -174,6 +174,10 @@ function removeItemFromCart(para) {
     addedToCart.splice(para, 1);
     writeCartInnerHTML();
     cartProductCount.innerHTML = `${addedToCart.length}`;
+    if (addedToCart.length == 0) {
+        bigCart.style = "display:none"
+        cart.setAttribute("onclick", "openCart()");
+    }
 }
 
 let cart = document.getElementById("cart");
@@ -188,6 +192,6 @@ function openCart() {
 
 function closeCart() {
     bigCart.style = "display:none"
-    cart.setAttribute("onclick", "openCart()");;
+    cart.setAttribute("onclick", "openCart()");
 }
 
