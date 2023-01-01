@@ -10,12 +10,16 @@
 </head>
 
 <body>
-    <section id="search">
-        <input type="search" name="search" id="searchInput">
-        <span id="cart" onclick="openCart()">Cart<div id="cartProductCount"></div></span>
-        <div id="bigCart">
+    <section id="header">
+        <div id="search">
+            <a href="./index.html" id="home">Home</a>
+            <input type="search" name="search" id="searchInput" placeholder="Search">
+            <span id="cart" onclick="openCart()">Cart<div id="cartProductCount"></div></span>
+            <div id="bigCart">
+            </div>
         </div>
     </section>
+
     <main>
         <section id="aside">
             <div id="categories">
@@ -32,10 +36,8 @@
         <section id="products">
 
         </section>
-        <section id="pagination">
-
-        </section>
     </main>
+    <section id="pagination"></section>
     <script src="./main.js"></script>
 </body>
 
