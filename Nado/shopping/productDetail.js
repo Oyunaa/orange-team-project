@@ -1,11 +1,8 @@
 
 const params = new URLSearchParams(window.location.search);
 
-console.log(params);
 
 let productID = params.get("productID");
-
-console.log(productID);
 
 filldata()
 
@@ -16,6 +13,10 @@ async function filldata() {
             productData = { ...data };
         });
     writeInnerHTML();
+    productImages.innerHTML +=
+        `<div class="carousel-item active">
+            <img src=${productData.images[0]} class="d-block w-100" alt="pic">
+        </div>`
     writeImages();
 }
 
@@ -32,8 +33,14 @@ function writeInnerHTML() {
     <div>Rating: ${productData.rating}/5.0</div>
     <div>Stock: ${productData.stock}</div>`
 }
+
+
+
 function writeImages() {
-    for (let i = 0; i < productData.images.length; i++) {
-        productImages.innerHTML += `<img src="${productData.images[i]}">`
+    for (let i = 1; i < productData.images.length; i++) {
+        productImages.innerHTML +=
+            `<div class="carousel-item">
+            <img src=${productData.images[i]} class="d-block w-100" alt="pic">
+        </div>`
     }
 }

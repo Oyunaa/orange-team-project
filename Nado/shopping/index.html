@@ -10,13 +10,16 @@
 </head>
 
 <body>
-    <section id="search">
-        <input type="search" name="search" id="searchInput">
-        <span id="cart" onclick="openCart()">Cart</span>
-        <div id="bigCart">
-
+    <section id="header">
+        <div id="search">
+            <a href="./index.html" id="home">Home</a>
+            <input type="search" name="search" id="searchInput" placeholder="Search">
+            <span id="cart" onclick="openCart()">Cart<div id="cartProductCount"></div></span>
+            <div id="bigCart">
+            </div>
         </div>
     </section>
+
     <main>
         <section id="aside">
             <div id="categories">
@@ -24,16 +27,17 @@
             </div>
             <div id="filters">
                 <h3>Filters</h3>
-                <input type="radio" id="priceFilter1" name="priceFilter" value="toHigh">
-                <label for="priceFilter1" onclick="sortToHigh()">Price: Low -> High</label><br>
-                <input type="radio" id="priceFilter2" name="priceFilter" value="toLow">
-                <label for="priceFilter2" onclick="sortToLow()">Price: High -> Low</label><br>
+                <input type="radio" id="priceFilter1" name="priceFilter" value="toHigh" onchange="sortToHigh()">
+                <label for="priceFilter1">Price: Low -> High</label><br>
+                <input type="radio" id="priceFilter2" name="priceFilter" value="toLow" onchange="sortToLow()">
+                <label for="priceFilter2">Price: High -> Low</label><br>
             </div>
         </section>
         <section id="products">
 
         </section>
     </main>
+    <section id="pagination"></section>
     <script src="./main.js"></script>
 </body>
 
