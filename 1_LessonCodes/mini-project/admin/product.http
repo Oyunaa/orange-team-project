@@ -1,0 +1,45 @@
+
+###
+GET http://localhost:4040
+
+###
+post http://localhost:4040/product
+content-type: application/json
+
+{
+  "title": "iPhone 9",
+  "description": "smartphone",
+  "price": "1230",
+  "isSpecial": false,
+  "imageURL": "url",
+  "category": "smartphone",
+  "days": "1,2,5"
+}
+
+
+###
+GET http://localhost:4040/product
+
+
+
+###
+GET http://localhost:4040/product/63acabb7fc2aec757d910086
+
+
+###
+DELETE  http://localhost:4040/product/63acabb7fc2aec757d910086
+
+
+###
+PUT  http://localhost:4040/product/:id
+content-type: application/json
+
+{
+  "title": "iPhone",
+  "description": "smartphone",
+  "price": "1230",
+  "isSpecial": false,
+  "imageURL": "url",
+  "category": "smartphone",
+  "days": "1,2,5"
+}

@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
+#carouselExample {
+    width: 500px;
+    border: 2px solid balck;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    height: 1000px;
+    padding-top: 200px;
+}
+
+#information {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}

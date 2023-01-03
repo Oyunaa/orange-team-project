@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <main>
+    <div class="container">
+      <!-- <h1>S.hop</h1> -->
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Shop</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Categories</a>
+              </li>
+
+            </ul>
+            <div class="position-relative btn btn-outline-info m-2" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">My Card
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                id="cardCount">
+                0
+              </span>
+            </div>
+            <form class="ml-2 d-flex" role="search">
+              <input class="form-control me-2" type="search" id="inputSearch" placeholder="хайх мэдээллээ оруулна уу">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">My Card</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Бүтээгдэхүүн</th>
+                          <th>Тоо ширхэг</th>
+                          <th>Үнийн дүн</th>
+                        </tr>
+                      </thead>
+                      <tbody id="cart-table">
+
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Pay</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </nav>
+      <div class="row p-2">
+        <div class="col-md-6">
+          <!-- <input type="text" class="form-control" id="inputSearch" placeholder="хайх мэдээллээ оруулна уу"> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <div id="categories">
+            <button type="button" data-bs-toggle="collapse" href="#menu" class="w-100 btn btn-outline-primary mb-2"> All
+              categories</button>
+            <ul class="collapse show list-group" id="menu">
+              <li class="list-group-item" onclick="filterCategories()">All categories</li>
+            </ul>
+            <button type=" button" data-bs-toggle="collapse" href="#sortMenu"
+              class="w-100 btn btn-outline-primary mt-2  mb-2">
+              Sort</button>
+            <ul class="collapse show list-group" id="sortMenu">
+
+              <li class="list-group-item">
+                <input type="radio" name="price" onchange="sort('price','low')" id="low"> Price High to Low<br>
+                <input type="radio" name="price" onchange="sort('price','high')" id="high"> Price Low to High
+              </li>
+
+              <li class="list-group-item">
+                <input type="radio" name="rating" onchange="sort('rating','low')" id="low"> Sale High to Low<br>
+                <input type="radio" name="rating" onchange="sort('rating','high')" id="high"> Sale Low to High
+              </li>
+            </ul>
+
+
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="row g-3" id="products"></div>
+          <div class="d-flex flex-row-reverse">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination" id="menuPagination">
+
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+  </main>
+
+  <script src="./index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
